@@ -8,7 +8,8 @@ A Model Context Protocol (MCP) server for accessing song lyrics and artist infor
 - Get detailed information about artists
 - Retrieve song lyrics
 - Get artist albums and top songs
-- Analyze lyrics and compare songs using prompts
+- Get album tracks
+- Search across different content types (songs, artists, albums, etc.)
 
 ## Requirements
 
@@ -60,22 +61,13 @@ mcp dev server.py
 
 ## Server Capabilities
 
-### Resources
-
-- `artist://{artist_name}/info` - Get basic information about an artist
-- `song://{artist_name}/{song_title}` - Get lyrics for a specific song
-
 ### Tools
 
-- `search_artist(name, max_songs=5)` - Search for an artist and their top songs
-- `search_song(title, artist=None)` - Search for a song
-- `get_artist_top_songs(artist_name, limit=10)` - Get the top songs by an artist
-- `get_artist_albums(artist_name)` - Get albums by an artist
-
-### Prompts
-
-- `analyze_lyrics(artist, song)` - Create a prompt to analyze song lyrics
-- `compare_songs(artist, song1, song2)` - Create a prompt to compare two songs by the same artist
+- `search(query, search_type=None, per_page=10, page=1)` - Search Genius for artists, songs, albums or other content
+- `get_lyrics(title, artist=None)` - Get lyrics for a song directly
+- `get_artist_songs(artist_identifier, per_page=20, sort="popularity")` - Get songs by an artist
+- `get_artist_albums(artist_identifier)` - Get albums by an artist
+- `get_album_tracks(album_identifier)` - Get tracks from an album by its ID or name
 
 ## License
 
